@@ -1,0 +1,15 @@
+a {
+  text-decoration: none;
+}
+
+.MuiPopover-root {
+  .MuiList-root,
+  .MuiMenu-list,
+  .MuiList-padding {
+    li {
+      font-family: inherit;
+      font-size: 14px;
+      justify-content: center;
+    }
+  }
+}
