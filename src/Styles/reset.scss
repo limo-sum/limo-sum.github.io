@@ -8,36 +8,25 @@
 }
 
 @font-face {
-  font-family: "Wemakeprice-Regular";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Wemakeprice-Regular.woff")
+  font-family: "KoreanFrenchTypewriter";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2102-01@1.0/KoreanFrenchTypewriter.woff")
     format("woff");
   font-weight: normal;
   font-style: normal;
-  font-display: block;
 }
 
 @font-face {
-  font-family: "SeoulNamsanM";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/SeoulNamsanM.woff")
+  font-family: "Cafe24Oneprettynight";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Oneprettynight.woff")
     format("woff");
   font-weight: normal;
   font-style: normal;
-  font-display: block;
-}
-
-@font-face {
-  font-family: "Sora";
-  src: url("https://fonts.googleapis.com/css2?family=Sora:wght@700&display=swap")
-    format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
 }
 
 * {
   box-sizing: border-box;
-  font-family: "SeoulNamsanM", "Sora", "Wemakeprice-Bold", "Wemakeprice-Regular",
-    "NotoSansCJKkr-Bold";
+  font-family: "Cafe24Oneprettynight", "Wemakeprice-Bold",
+    "KoreanFrenchTypewriter";
 }
 
 #emoji-close-div {
@@ -130,6 +119,7 @@ video {
   padding: 0;
   border: 0;
   font-size: 100%;
+  line-height: 2;
   vertical-align: baseline;
   outline: none;
   -webkit-font-smoothing: antialiased;
@@ -143,18 +133,8 @@ video {
   user-select: none;
 }
 
-.highcharts-credits {
-  display: none;
-}
 ::-webkit-scrollbar {
   display: none;
-}
-
-.MuiPaper-root {
-  .descWord {
-    padding: 10px 20px;
-    font-size: 14px;
-  }
 }
 
 article,
