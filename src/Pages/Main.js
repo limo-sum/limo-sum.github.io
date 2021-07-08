@@ -39,8 +39,8 @@ const MainFrame = styled.div`
 
   h1 {
     margin: 100px auto;
-    width: 300px;
-    font-family: "KoreanFrenchTypewriter";
+    width: 320px;
+    font-family: "GongGothicBold";
     font-size: ${({ isMobile }) => (isMobile ? "36px" : "48px")};
     font-weight: 600;
     text-align: center;

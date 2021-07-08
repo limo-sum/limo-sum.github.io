@@ -1,23 +1,14 @@
 @font-face {
-  font-family: "Wemakeprice-Bold";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Wemakeprice-Bold.woff")
-    format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
-}
-
-@font-face {
-  font-family: "KoreanFrenchTypewriter";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2102-01@1.0/KoreanFrenchTypewriter.woff")
+  font-family: "IBMPlexSansKR-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff")
     format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Cafe24Oneprettynight";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Oneprettynight.woff")
+  font-family: "GongGothicBold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicBold.woff")
     format("woff");
   font-weight: normal;
   font-style: normal;
@@ -25,13 +16,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: "Cafe24Oneprettynight", "Wemakeprice-Bold",
-    "KoreanFrenchTypewriter";
-}
-
-#emoji-close-div {
-  width: 0 !important;
-  height: 0 !important;
+  font-family: "IBMPlexSansKR-Regular", "GongGothicBold";
 }
 
 html,
@@ -155,10 +140,6 @@ button {
   border: none;
   outline: none;
   cursor: pointer;
-}
-
-body {
-  line-height: 1;
 }
 
 ol,
