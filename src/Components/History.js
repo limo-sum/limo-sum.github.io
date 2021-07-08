@@ -13,25 +13,26 @@ const History = observer(({ data, title }) => {
   });
 
   const [bigImg, setBigImg] = useState(null);
+  const [eachTitle, setEachTitle] = useState(null);
   const [imgIdx, setImgIndex] = useState(null);
 
-  const showBigImg = (src) => {
-    const srcName = src.split(".")[0];
-    setBigImg(src);
-    setImgIndex(srcName.slice(-1));
+  const showBigImg = (title, idx) => {
+    const details = data.find((p) => p.title === title).n_details;
+    setBigImg(details[idx]);
+    setEachTitle(title);
+    setImgIndex(idx);
   };
 
   const showOtherImg = (where) => {
-    const acturalIdx = Number(imgIdx - 1);
-    const totalLength = data.find((p) =>
-      bigImg.includes(p.title.toLocaleLowerCase())
-    ).n_details;
+    const details = data.find((p) => p.title === eachTitle).n_details;
+    const acturalIdx = Number(imgIdx);
+    const totalLength = details.length;
 
     if (where === "prev" && acturalIdx !== 0) {
-      setBigImg(bigImg.replace(`${imgIdx}.`, `${Number(imgIdx) - 1}.`));
+      setBigImg(details[imgIdx - 1]);
       setImgIndex(Number(imgIdx) - 1);
     } else if (where === "next" && acturalIdx < totalLength - 1) {
-      setBigImg(bigImg.replace(`${imgIdx}.`, `${Number(imgIdx) + 1}.`));
+      setBigImg(details[imgIdx + 1]);
       setImgIndex(Number(imgIdx) + 1);
     }
   };
@@ -39,9 +40,7 @@ const History = observer(({ data, title }) => {
     <HistoryFrame>
       <h2 className="bigTitle">{title}</h2>
       {data.map((pr, idx) => {
-        const details = pr.n_details
-          ? Array.from(Array(pr.n_details).keys())
-          : [];
+        const details = pr.n_details ? pr.n_details : [];
 
         const months = `${dateFormatter(pr.period[0])} - ${dateFormatter(
           pr.period[1]
@@ -51,11 +50,7 @@ const History = observer(({ data, title }) => {
         return (
           <EachExp isTablet={isTablet} key={idx}>
             <ImageFrame>
-              <img
-                src={`/Images/${pr.img}`}
-                className="projImage"
-                alt="expImage"
-              />
+              <img src={pr.img} className="projImage" alt="expImage" />
             </ImageFrame>
 
             <HoverFrame isTablet={isTablet}>
@@ -95,17 +90,14 @@ const History = observer(({ data, title }) => {
               )}
               {pr.n_details && (
                 <ScreenshotsFrame isTablet={isTablet}>
-                  {details.map((s, idx) => {
-                    const src = `/Images/s-${pr.title.toLocaleLowerCase()}${
-                      idx + 1
-                    }.png`;
+                  {details.map((src, idx) => {
                     return (
                       <img
                         className="screenshots"
                         key={idx}
                         src={src}
                         alt="screenshots"
-                        onClick={() => showBigImg(src)}
+                        onClick={() => showBigImg(pr.title, idx)}
                       />
                     );
                   })}
@@ -120,11 +112,8 @@ const History = observer(({ data, title }) => {
           <BigImageFrame className="bigimageframe">
             <i className="fas fa-times" onClick={() => setBigImg(null)} />
             <p className="pages">
-              {`${Number(imgIdx)} /
-              ${
-                data.find((p) => bigImg.includes(p.title.toLocaleLowerCase()))
-                  .n_details
-              }`}
+              {`${Number(imgIdx + 1)} /
+              ${data.find((p) => p.title === eachTitle).n_details.length}`}
             </p>
             <ShowPrev onClick={() => showOtherImg("prev")}>
               <i className="fas fa-chevron-left" />

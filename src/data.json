@@ -9,13 +9,13 @@
     {
       "at": "Wecode",
       "title": "프론트엔드 개발 교육 이수",
-      "img": "wecode.png",
+      "img": "https://i.imgur.com/2sJI0WG.png",
       "period": ["June 01, 2020", "September 01, 2020"]
     },
     {
       "at": "인하대학교",
       "title": "국제통상학",
-      "img": "inha.jpeg",
+      "img": "https://i.imgur.com/MSTqZFm.jpg",
       "period": ["March 02, 2009", "Feburary 16, 2016"]
     }
   ],
@@ -24,7 +24,7 @@
     {
       "at": "앤서테크놀로지스",
       "title": "프론트엔드 개발자",
-      "img": "anser.png",
+      "img": "https://i.imgur.com/IarHCPp.png",
       "skills": [
         "React",
         "React Hooks",
@@ -40,7 +40,7 @@
     {
       "at": "코스모이엔지",
       "title": "무역팀 수출 담당자",
-      "img": "cosmo.jpeg",
+      "img": "https://i.imgur.com/XFGN9Yh.jpg",
       "skills": [],
       "desc": "General Motors의 전세계 지사에 부품 납품 (수출)",
       "period": ["January 09, 2017", "January 10, 2020"]
@@ -50,7 +50,7 @@
   "projects": [
     {
       "title": "ZuKeeper",
-      "img": "zukeeper.png",
+      "img": "https://i.imgur.com/qk6BLRe.png",
       "skills": [
         "React",
         "React Hooks",
@@ -71,11 +71,16 @@
       ],
       "url": "http://zukeeper.ai",
       "period": ["October 01, 2020", "June 30, 2021"],
-      "n_details": 4
+      "n_details": [
+        "https://i.imgur.com/CkUjk76.jpg",
+        "https://i.imgur.com/eYc3k4F.png",
+        "https://i.imgur.com/ORoHOzs.png",
+        "https://i.imgur.com/XI3OtDK.png"
+      ]
     },
     {
       "title": "Mynter",
-      "img": "mynter.png",
+      "img": "https://i.imgur.com/17XZPRE.png",
       "skills": [
         "React",
         "JavaScript",
@@ -89,11 +94,14 @@
       "desc": "Web socket으로 주가 자동 업데이트를 구현했습니다. Visualization library인 Highchart를 이용하여 데이터를 시각화했습니다.",
       "url": "",
       "period": ["July 01, 2021"],
-      "n_details": 2
+      "n_details": [
+        "https://i.imgur.com/vJZpTeo.png",
+        "https://i.imgur.com/pPZCmCU.png"
+      ]
     },
     {
       "title": "Unsplash",
-      "img": "unsplash.jpeg",
+      "img": "https://i.imgur.com/ptCQDYR.jpg",
       "skills": ["React", "JavaScript", "Styled-Components", "CRA", "Hooks"],
       "introd": "Wecode 단기 팀 프로젝트 : 스톡 이미지 공유 웹 Unsplash Cloning",
       "desc": "React 함수형 컴포넌트와 Hooks, Styled Component를 활용한 첫 프로젝트입니다. Intersection Observer로 Pagination을 구현했습니다.",
@@ -102,7 +110,7 @@
     },
     {
       "title": "La Roche-Posay",
-      "img": "laro.png",
+      "img": "https://i.imgur.com/heVL2aa.png",
       "skills": ["React", "JavaScript", "CRA"],
       "introd": "Wecode 단기 팀 프로젝트 : 스킨케어 전문 브랜드 라로슈포제 쇼핑몰 Cloning",
       "desc": "첫 프로젝트입니다. React 클래스형 컴포넌트와 LifeCycle을 활용하였으며, 동적 Routing을 이용하여 페이지를 전환합니다.",

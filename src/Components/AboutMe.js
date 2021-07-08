@@ -4,6 +4,7 @@ import { observer } from "mobx-react";
 import styled from "styled-components";
 import { briefInfo } from "../data.json";
 import UnderLine from "../CommonComponents/UnderLine";
+import profile from "../Images/profile.jpeg";
 
 const AboutMe = observer(() => {
   const isTablet = useMediaQuery({
@@ -19,7 +20,7 @@ const AboutMe = observer(() => {
 
   return (
     <AboutMeFrame isTablet={isTablet}>
-      <img className="profile" alt="profile" src="/Images/profile.jpeg" />
+      <img className="profile" alt="profile" src={profile} />
       <Text isTablet={isTablet} isMobile={isMobile}>
         <h2 className="name">
           이지윤 <UnderLine />

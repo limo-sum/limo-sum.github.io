@@ -2,6 +2,8 @@ import React from "react";
 import { useMediaQuery } from "react-responsive";
 import { observer } from "mobx-react";
 import styled from "styled-components";
+import mobx from "../Images/mobx.png";
+import aws from "../Images/aws.png";
 
 const Intro = observer(() => {
   const isTablet = useMediaQuery({
@@ -29,8 +31,8 @@ const Intro = observer(() => {
           <i className="fab fa-react" style={{ color: "#61DAFB" }}></i>
           <i className="fab fa-js-square" style={{ color: "#E5A228" }} />
           <i className="fab fa-git" />
-          <img src="/Images/mobx.png" alt="mobx" />
-          <img src="/Images/aws.png" alt="aws" />
+          <img src={mobx} alt="mobx" />
+          <img src={aws} alt="aws" />
         </SkillImage>
         <p>React.js, HTML, CSS(SCSS)로 웹을 개발합니다.</p>
         <p>Styled-Component를 이용하며, 반응형 웹을 만들 수 있습니다.</p>

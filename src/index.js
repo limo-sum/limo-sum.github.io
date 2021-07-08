@@ -7,7 +7,7 @@ import { Provider } from "mobx-react";
 
 ReactDOM.render(
   <Provider>
-    <Routes />
+    <Routes basename={"/portfolio"} />
   </Provider>,
   document.getElementById("root")
 );
