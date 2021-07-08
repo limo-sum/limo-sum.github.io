@@ -7,7 +7,7 @@ const Main = loadable(() => import("./Pages/Main"));
 
 const Routes = observer(() => {
   return (
-    <Router>
+    <Router basename={"/portfolio"}>
       <Switch>
         <Route exact path="/" component={Main} />
       </Switch>
