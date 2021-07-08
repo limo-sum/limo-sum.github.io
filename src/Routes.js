@@ -9,7 +9,7 @@ const Routes = observer(() => {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={Main} />
+        <Route exact path="/portfolio" component={Main} />
       </Switch>
     </Router>
   );
