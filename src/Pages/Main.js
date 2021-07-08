@@ -6,6 +6,7 @@ import AboutMe from "../Components/AboutMe";
 import Intro from "../Components/Intro";
 import Projects from "../Components/Projects";
 import Experiences from "../Components/Experiences";
+import Education from "../Components/Education";
 
 const Main = observer(() => {
   const isTablet = useMediaQuery({
@@ -22,6 +23,7 @@ const Main = observer(() => {
       <Intro />
       <Projects />
       <Experiences />
+      <Education />
     </MainFrame>
   );
 });

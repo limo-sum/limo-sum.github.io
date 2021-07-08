@@ -8,6 +8,9 @@ const Projects = observer(() => {
   const isTablet = useMediaQuery({
     query: "(max-width: 768px)",
   });
+  const isMobile = useMediaQuery({
+    query: "(max-width: 480px)",
+  });
 
   const proj = [
     {
@@ -24,11 +27,7 @@ const Projects = observer(() => {
       ],
       introd:
         "개인과 기관 투자자의 금융 정보격차를 해소하기 위해 개인 투자자에게 양질의 금융 정보를 쉽게 전달하는 서비스",
-      desc: `
-      반응형 웹
-      프론트엔드 개발환경을 구축하고 (CRA) AWS EC2를 이용하여 프로젝트를 배포 및 도메인을 연결했습니다. 
-      AWS Route53, Load Balancer 이용하여 HTTPS 통신 환경을 구축했습니다.
-      MobX를 이용하여 전역상태를 관리한 첫 프로젝트입니다.`,
+      desc: `프론트엔드 개발환경을 구축하고 (CRA) AWS EC2를 이용하여 프로젝트를 배포 및 도메인을 연결했습니다. AWS Route53, Load Balancer 이용하여 HTTPS 통신 환경을 구축했습니다. MobX를 이용하여 전역상태를 관리한 첫 프로젝트입니다.`,
       functions: [
         "광고 : Google Adsense 적용",
         "SNS : 글쓰기, 사진 올리기, 좋아요/싫어요, 댓글, 대댓글, 공유",
@@ -57,6 +56,7 @@ const Projects = observer(() => {
       desc: `Web socket으로 주가 자동 업데이트를 구현했습니다. Visualization library인 Highchart를 이용하여 데이터를 시각화했습니다.`,
       url: "",
       period: [new Date("July 01, 2021")],
+      n_details: 2,
     },
     {
       title: "Unsplash",
@@ -117,39 +117,42 @@ const Projects = observer(() => {
                 className="projImage"
                 alt="projectImage"
               />
-              {pr.url && (
-                <i className="fas fa-globe" onClick={() => goToPage(pr.url)} />
-              )}
             </ImageFrame>
+            <HoverFrame isTablet={isTablet}>
+              <Title isMobile={isMobile}>
+                <h3>
+                  {pr.title}
+                  {pr.url && (
+                    <i
+                      className="fas fa-globe"
+                      onClick={() => goToPage(pr.url)}
+                    />
+                  )}
+                </h3>
 
-            <div>
-              <HoverFrame>
-                <Title>
-                  <h3>{pr.title}</h3>
-                  <span>
-                    ({dateFormatter(pr.period[0])} -{" "}
-                    {dateFormatter(pr.period[1])})
-                  </span>
-                </Title>
-                <p className="intro">{pr.introd}</p>
-                <p>{pr.desc}</p>
-                {pr.functions && (
-                  <div>
-                    주요 구현 기능 :
-                    {pr.functions.map((fu, idx) => {
-                      return <li key={idx}>{fu}</li>;
-                    })}
-                  </div>
-                )}
-                <ul>
-                  {pr.skills.map((sk, idx) => {
-                    return <li key={idx}>#{sk}</li>;
+                <span>
+                  ({dateFormatter(pr.period[0])} - {dateFormatter(pr.period[1])}
+                  )
+                </span>
+              </Title>
+              <p className="intro">{pr.introd}</p>
+              <p className="description">{pr.desc}</p>
+              {pr.functions && (
+                <div>
+                  주요 구현 기능 :
+                  {pr.functions.map((fu, idx) => {
+                    return <li key={idx}>{fu}</li>;
                   })}
-                </ul>
-              </HoverFrame>
-              <ScreenshotsFrame>
-                {pr.n_details &&
-                  details.map((s, idx) => {
+                </div>
+              )}
+              <ul>
+                {pr.skills.map((sk, idx) => {
+                  return <li key={idx}>#{sk}</li>;
+                })}
+              </ul>
+              {pr.n_details && (
+                <ScreenshotsFrame isTablet={isTablet}>
+                  {details.map((s, idx) => {
                     const src = `/Images/s-${pr.title.toLocaleLowerCase()}${
                       idx + 1
                     }.png`;
@@ -163,8 +166,9 @@ const Projects = observer(() => {
                       />
                     );
                   })}
-              </ScreenshotsFrame>
-            </div>
+                </ScreenshotsFrame>
+              )}
+            </HoverFrame>
           </EachProject>
         );
       })}
@@ -172,11 +176,20 @@ const Projects = observer(() => {
         <>
           <BigImageFrame className="bigimageframe">
             <i className="fas fa-times" onClick={() => setBigImg(null)} />
+            <p className="pages">
+              {`${Number(imgIdx)} /
+              ${
+                proj.find((p) => bigImg.includes(p.title.toLocaleLowerCase()))
+                  .n_details
+              }`}
+            </p>
+            <ShowPrev onClick={() => showOtherImg("prev")}>
+              <i className="fas fa-chevron-left" />
+            </ShowPrev>
+            <ShowNext onClick={() => showOtherImg("next")}>
+              <i className="fas fa-chevron-right" />
+            </ShowNext>
             <BigImage className="bigimage">
-              <SlideFrame className="slideframe">
-                <ShowPrev onClick={() => showOtherImg("prev")} />
-                <ShowNext onClick={() => showOtherImg("next")} />
-              </SlideFrame>
               <img src={bigImg} className="bigImage" alt="bigImage" />
             </BigImage>
           </BigImageFrame>
@@ -222,10 +235,14 @@ const EachProject = styled.div`
   .intro {
     color: gray;
   }
+
+  .description {
+    white-space: pre-line;
+  }
 `;
 
 const Title = styled.div`
-  display: flex;
+  display: ${({ isMobile }) => (isMobile ? "block" : "flex")};
   align-items: flex-end;
 
   h3 {
@@ -233,30 +250,42 @@ const Title = styled.div`
     margin-right: 5px;
     font-size: 24px;
     cursor: pointer;
+    line-height: ${({ isMobile }) => (isMobile ? "1" : "48px")};
+
+    .fa-globe {
+      margin: 0 5px;
+      line-height: 48px;
+      font-size: 16px;
+      color: gray;
+      cursor: pointer;
+    }
   }
 
   span {
     font-size: 14px;
     font-weight: 400;
-    line-height: 48px;
+    line-height: ${({ isMobile }) => (isMobile ? "1" : "48px")};
   }
 `;
 
 const ImageFrame = styled.div`
   width: 120px;
-  .fa-globe {
-    width: 100px;
-    text-align: center;
-    color: gray;
-    cursor: pointer;
-  }
 `;
 
-const HoverFrame = styled.div``;
+const HoverFrame = styled.div`
+  width: ${({ isTablet }) => (isTablet ? "100%" : "calc(100% - 120px)")};
+`;
 
 const ScreenshotsFrame = styled.div`
+  display: flex;
+  align-items: flex-start;
+  margin-top: 10px;
+  width: 100%;
+  height: 200px;
+  overflow-y: hidden;
+
   img {
-    height: 200px;
+    width: 200px;
     cursor: pointer;
   }
 `;
@@ -280,7 +309,25 @@ const BigImageFrame = styled.div`
   min-width: 300px;
   height: 80vh;
   overflow-y: scroll;
+  border-radius: 10px;
+  background-color: #fff;
+  -webkit-box-shadow: 5px 5px 7px 0px #d6d6d6;
+  box-shadow: 5px 5px 7px 0px #d6d6d6;
   z-index: 2;
+
+  .pages {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0 20px;
+    font-weight: 600;
+    line-height: 1.3;
+    border-radius: 10px;
+    color: #fff;
+    background-color: yellowgreen;
+    z-index: 4;
+  }
 
   .fa-times {
     position: absolute;
@@ -293,8 +340,6 @@ const BigImageFrame = styled.div`
 const BigImage = styled.div`
   ${ImgFrameCss}
   height: 100%;
-  -webkit-box-shadow: 5px 5px 7px 0px #a5a5a5;
-  box-shadow: 5px 5px 7px 0px #a5a5a5;
   background-color: #fff;
   overflow-y: scroll;
 
@@ -304,19 +349,26 @@ const BigImage = styled.div`
   }
 `;
 
-const SlideFrame = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 3;
-`;
-
 const ArrowFrameCss = css`
   position: absolute;
   width: 20%;
   height: 100%;
   cursor: pointer;
-  background-color: yellow;
+  z-index: 3;
+
+  i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    opacity: 0.3;
+
+    &:hover {
+      color: yellowgreen;
+      opacity: 1;
+    }
+  }
 `;
 
 const ShowPrev = styled.div`
