@@ -25,7 +25,7 @@ export const dateFormatter = (value) => {
 export const monthDiff = (d1, d2) => {
   let months;
   const date1 = new Date(d1);
-  const date2 = new Date(d2);
+  const date2 = d2 ? new Date(d2) : new Date();
   const year = date2.getFullYear() - date1.getFullYear();
 
   months = year * 12;
@@ -34,5 +34,5 @@ export const monthDiff = (d1, d2) => {
 
   const years = `${year}년 ${months % 12 === 0 ? "" : (months % 12) + "개월"}`;
 
-  return months <= 0 ? 0 : months < 12 ? months + "개월" : years;
+  return months <= 0 ? "" : months < 12 ? months + "개월" : years;
 };

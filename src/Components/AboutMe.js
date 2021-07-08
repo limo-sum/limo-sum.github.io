@@ -2,6 +2,7 @@ import React from "react";
 import { useMediaQuery } from "react-responsive";
 import { observer } from "mobx-react";
 import styled from "styled-components";
+import { briefInfo } from "../data.json";
 import UnderLine from "../CommonComponents/UnderLine";
 
 const AboutMe = observer(() => {
@@ -11,12 +12,6 @@ const AboutMe = observer(() => {
   const isMobile = useMediaQuery({
     query: "(max-width: 480px)",
   });
-
-  const info = [
-    { category: "Email", address: "i01029407043@gmail.com" },
-    { category: "Github", address: "https://github.com/limo-sum" },
-    { category: "Blog", address: "https://velog.io/@i01029407043" },
-  ];
 
   const goToPage = (addr, idx) => {
     idx !== 0 && window.open(addr, "_blank");
@@ -29,7 +24,7 @@ const AboutMe = observer(() => {
         <h2 className="name">
           이지윤 <UnderLine />
         </h2>
-        {info.map((el, idx) => {
+        {briefInfo.map((el, idx) => {
           return (
             <Category key={idx} isTablet={isTablet}>
               <p className="button">{el.category}</p>

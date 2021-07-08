@@ -4,9 +4,8 @@ import { observer } from "mobx-react";
 import styled from "styled-components";
 import AboutMe from "../Components/AboutMe";
 import Intro from "../Components/Intro";
-import Projects from "../Components/Projects";
-import Experiences from "../Components/Experiences";
-import Education from "../Components/Education";
+import History from "../Components/History";
+import { education, experience, projects } from "../data.json";
 
 const Main = observer(() => {
   const isTablet = useMediaQuery({
@@ -21,9 +20,9 @@ const Main = observer(() => {
       <h1>{"{ JiYun Lee }"}</h1>
       <AboutMe />
       <Intro />
-      <Projects />
-      <Experiences />
-      <Education />
+      <History data={projects} title="Projects" />
+      <History data={experience} title="Experience" />
+      <History data={education} title="Education" />
     </MainFrame>
   );
 });
